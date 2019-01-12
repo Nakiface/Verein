@@ -17,7 +17,7 @@ _INIT;
 
   require_once 'functions.php';
 
-  $userstr = 'Willkommen Gast';
+  $userstr = 'Willkommen Gast!';
 
   if (isset($_SESSION['user']))
   {
