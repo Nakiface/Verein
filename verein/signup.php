@@ -49,9 +49,10 @@ _END;
         $error = 'That username already exists<br><br>';
       else
       {
+        $hash = password_hash($pass, PASSWORD_DEFAULT);
         queryMysql("INSERT INTO memdata (name, vorname, strasse, plz, stadt, tel, email, info)
                     VALUES ('$name', '$vorname', '$strasse', '$plz', '$stadt', '$tel', '$user', '$info')");
-        queryMysql("INSERT INTO members VALUES('$user', '$pass')");
+        queryMysql("INSERT INTO members VALUES('$user', '$hash')");
         die('<h4>Account created</h4>Please Log in.</div></body></html>');
       }
     }
