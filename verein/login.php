@@ -6,25 +6,25 @@
   {
     $user = sanitizeString($_POST['user']);
     $pass = sanitizeString($_POST['pass']);
-    
+
     if ($user == "" || $pass == "")
-      $error = 'Not all fields were entered';
+      $error = 'Es wurden nicht alle Felder eingegeben';
     else
     {
-      $result = queryMySQL("SELECT user,pass FROM members
-        WHERE user='$user' AND pass='$pass'");
-
-      if ($result->num_rows == 0)
-      {
-        $error = "Invalid login attempt";
-      }
-      else
+      $result = queryMySQL("SELECT pass FROM members WHERE user='$user'");
+      $result -> data_seek(0);
+      $hash = $result -> fetch_assoc()[pass];
+      if (password_verify($pass, $hash))
       {
         $_SESSION['user'] = $user;
         $_SESSION['pass'] = $pass;
         die("<div class='center'>You are now logged in. Please
              <a data-transition='slide' href='members.php?view=$user'>click here</a>
              to continue.</div></div></body></html>");
+      }
+      else
+      {
+        $error = 'Das eingegebene Passwort ist falsch';
       }
     }
   }

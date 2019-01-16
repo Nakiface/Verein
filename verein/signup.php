@@ -40,20 +40,20 @@ _END;
     $info     = sanitizeString($_POST['info']);
 
     if ($user == "" || $pass == "")
-      $error = 'Not all fields were entered<br><br>';
+      $error = 'Es wurden nicht alle notwendigen Felder ausgefüllt<br><br>';
     else
     {
       $result = queryMysql("SELECT * FROM members WHERE user='$user'");
 
       if ($result->num_rows)
-        $error = 'That username already exists<br><br>';
+        $error = 'Diese E-Mail Adresse ist bereits vergeben<br><br>';
       else
       {
         $hash = password_hash($pass, PASSWORD_DEFAULT);
         queryMysql("INSERT INTO memdata (name, vorname, strasse, plz, stadt, tel, email, info)
                     VALUES ('$name', '$vorname', '$strasse', '$plz', '$stadt', '$tel', '$user', '$info')");
         queryMysql("INSERT INTO members VALUES('$user', '$hash')");
-        die('<h4>Account created</h4>Please Log in.</div></body></html>');
+        die('<h4>Account wurde erstellt</h4>Please Log in.</div></body></html>');
       }
     }
   }
