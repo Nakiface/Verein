@@ -3,10 +3,10 @@
 
   if (!$loggedin) die("</div></body></html>");
 
-  echo "<h3>Your Profile</h3>";
+  echo "<h3>Dein Profil</h3>";
 
   $result = queryMysql("SELECT * FROM profiles WHERE user='$user'");
-    
+
   if (isset($_POST['text']))
   {
     $text = sanitizeString($_POST['text']);
@@ -81,7 +81,7 @@
 echo <<<_END
       <form data-ajax='false' method='post'
         action='profile.php' enctype='multipart/form-data'>
-      <h3>Enter or edit your details and/or upload an image</h3>
+      <h3>Ändere deine Details und/oder füge ein Foto hinzu</h3>
       <textarea name='text'>$text</textarea><br>
       Image: <input type='file' name='image' size='14'>
       <input type='submit' value='Save Profile'>
@@ -91,4 +91,3 @@ echo <<<_END
 </html>
 _END;
 ?>
-

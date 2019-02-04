@@ -6,11 +6,11 @@
   if (isset($_GET['view']))
   {
     $view = sanitizeString($_GET['view']);
-    
-    if ($view == $user) $name = "Your";
+
+    if ($view == $user) $name = "Dein";
     else                $name = "$view's";
-    
-    echo "<h3>$name Profile</h3>";
+
+    echo "<h3>$name Profil</h3>";
     showProfile($view);
     echo "<a data-role='button' data-transition='slide'
           href='messages.php?view=$view'>View $name messages</a>";
@@ -34,13 +34,13 @@
   $result = queryMysql("SELECT user FROM members ORDER BY user");
   $num    = $result->num_rows;
 
-  echo "<h3>Other Members</h3><ul>";
+  echo "<h3>andere Mitglieder</h3><ul>";
 
   for ($j = 0 ; $j < $num ; ++$j)
   {
     $row = $result->fetch_array(MYSQLI_ASSOC);
     if ($row['user'] == $user) continue;
-    
+
     echo "<li><a data-transition='slide' href='members.php?view=" .
       $row['user'] . "'>" . $row['user'] . "</a>";
     $follow = "follow";
@@ -56,7 +56,7 @@
     elseif ($t1)         echo " &larr; you are following";
     elseif ($t2)       { echo " &rarr; is following you";
                          $follow = "recip"; }
-    
+
     if (!$t1) echo " [<a data-transition='slide'
       href='members.php?add=" . $row['user'] . "'>$follow</a>]";
     else      echo " [<a data-transition='slide'

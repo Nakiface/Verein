@@ -49,9 +49,11 @@ echo <<<_LOGGEDIN
           <a data-role='button' data-inline='true' data-icon='user'
             data-transition="slide" href='members.php'>Members</a>
           <a data-role='button' data-inline='true' data-icon='heart'
-            data-transition="slide" href='friends.php'>Friends</a><br>
+            data-transition="slide" href='friends.php'>Friends</a>
+          <a data-role='button' data-inline='true' data-icon='plus'
+            data-transition="slide" href='eintrag.php'>Eintrag</a>
           <a data-role='button' data-inline='true' data-icon='mail'
-            data-transition="slide" href='messages.php'>Messages</a>
+            data-transition="slide" href='ubersicht.php'>Messages</a>
           <a data-role='button' data-inline='true' data-icon='edit'
             data-transition="slide" href='profile.php'>Edit Profile</a>
           <a data-role='button' data-inline='true' data-icon='action'
